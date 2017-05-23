@@ -1,4 +1,5 @@
 # my additions to the VMD configuration file
 source ~/work/CRG/code/tcl/hoomd_vistools.tcl
+source ~/work/CRG/code/tcl/sbs_tracers.tcl
 source ~/work/tools/myvmdtools/render.tcl
 source ~/work/tools/myvmdtools/view_change_render.tcl
