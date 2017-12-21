@@ -2,6 +2,13 @@
 set root_name "sbs_tracers"
 set root_dir "$::env(HOME)/work/data/hoomd/$root_name"
 
+proc add_rep {currentMol numreps} {
+  mol addrep $currentMol
+  set rep [mol repname $currentMol $numreps]
+  set ID [mol repindex $currentMol $rep]
+  return $ID
+}
+
 # this function sets up the visualization state for the polymer
 proc sbs_tracers_rep {molid} {
   # variable settings
