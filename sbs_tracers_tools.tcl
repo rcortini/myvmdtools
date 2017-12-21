@@ -24,12 +24,16 @@ proc sbs_tracers_rep {molid} {
   set currentMol $molid
   set numreps [molinfo $currentMol get numreps]
 
+  # fix the name of the "D1" atoms
+  set D1 [atomselect $molid "name D1"]
+  $D1 set name "F"
+
   # color definitions
   color Name C red
   color Name A blue2
   color Name B blue
   color Name D yellow
-  color Name D1 yellow3
+  color Name F yellow3
 
   # polymer representation
   set polymerrepID [add_rep $currentMol $numreps]
@@ -54,7 +58,7 @@ proc sbs_tracers_rep {molid} {
   # tracers representation
   incr numreps
   set tracers1repID [add_rep $currentMol $numreps]
-  mol modselect $tracers1repID $currentMol "name D1"
+  mol modselect $tracers1repID $currentMol "name F"
   mol modstyle $tracers1repID $currentMol VDW $tracer_radius $res
   mol modmaterial $tracersrepID $currentMol AOEdgy
 }
