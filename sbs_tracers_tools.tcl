@@ -105,6 +105,9 @@ proc sbs_tracers_loadsim {run_id phi e n} {
 
 proc prepare_render {} {
   # display settings
+  set x 1280
+  set y 960
+  display resize $x $y
   color Display Background white
   display shadows on
   display ambientocclusion on
@@ -141,9 +144,6 @@ proc load_sim {run_id phi e n} {
 }
 
 proc xml_pbc_fix {} {
-  # representation of periodic box
-  pbc box -center origin
-
   # unwrap tracers and factors coordinates
   pbc wrap -all -center origin -compound fragment
 }
@@ -185,7 +185,6 @@ proc bring_polymer_to_center {molid polymer_text central_particle_text} {
 }
 
 proc gsd_pbs_fix {molid polymer_text central_particle_text} {
-  pbc box -center origin
   set nframes [molinfo top get numframes]
   for {set i 0} {$i < $nframes} {incr i} {
     animate goto $i
