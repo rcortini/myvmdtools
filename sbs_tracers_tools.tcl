@@ -33,7 +33,18 @@ proc sbs_tracers_rep {molid} {
   color Name A blue2
   color Name B blue
   color Name D yellow
-  color Name F yellow3
+  # color Name F yellow3
+
+  # my new material
+  material add AOTransparent
+  material change ambient AOTransparent 0.00
+  material change diffuse AOTransparent 0.85
+  material change specular AOTransparent 0.20
+  material change shininess AOTransparent 0.53
+  material change mirror AOTransparent 0.00
+  material change opacity AOTransparent 0.70
+  material change outline AOTransparent 0.00
+  material change outlinewidth AOTransparent 0.00
 
   # polymer representation
   set polymerrepID [add_rep $currentMol $numreps]
@@ -61,6 +72,13 @@ proc sbs_tracers_rep {molid} {
   mol modselect $tracers1repID $currentMol "name F"
   mol modstyle $tracers1repID $currentMol VDW $tracer_radius $res
   mol modmaterial $tracersrepID $currentMol AOEdgy
+
+  # tracers representation
+  incr numreps
+  set crowdersrepID [add_rep $currentMol $numreps]
+  mol modselect $crowdersrepID $currentMol "name E"
+  mol modstyle $crowdersrepID $currentMol VDW 1.0 $res
+  mol modmaterial $crowdersrepID $currentMol AOTransparent
 }
 
 proc sim_basename {phi e} {

@@ -158,10 +158,10 @@ after idle {
       color Display Foreground white
       color add item Display FPS white
       color Display FPS white
-      color add item Axes X red
-      color Axes X red
       color add item Axes Y green
       color Axes Y green
+      color add item Axes X red
+      color Axes X red
       color add item Axes Z blue
       color Axes Z blue
       color add item Axes Origin cyan
